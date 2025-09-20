@@ -7,6 +7,7 @@ import Image from 'next/image';
 export default function MAFARHomepage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -29,7 +30,7 @@ export default function MAFARHomepage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          access_key: "f4a5a629-0ff3-4c63-b0f6-6e2c5f8d9a3b", // Temporary key - replace with your Web3Forms key
+          access_key: "5452ae12-b718-4763-8bab-2121075729e4", // Production Web3Forms key
           subject: "New MAFAR Network Join Request",
           from_name: "MAFAR Homepage",
           to: "mafarhealthtech@gmail.com",
@@ -44,8 +45,9 @@ export default function MAFARHomepage() {
       });
       
       if (response.ok) {
-        alert("Terima kasih! Pasukan kami akan hubungi anda dalam masa 24 jam.");
+        setShowSuccess(true);
         setFormData({ name: '', phone: '', email: '', clinicName: '', location: '', type: 'clinic-owner' });
+        setTimeout(() => setShowSuccess(false), 5000);
       }
     } catch (error) {
       alert("Ada masalah. Sila cuba lagi atau WhatsApp kami.");
@@ -110,6 +112,16 @@ export default function MAFARHomepage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Success Toast */}
+      {showSuccess && (
+        <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50 flex items-center">
+          <CheckCircle className="mr-2" size={20} />
+          <div>
+            <div className="font-bold">Berjaya dihantar! ✅</div>
+            <div className="text-sm">Pasukan kami akan hubungi anda dalam masa 24 jam.</div>
+          </div>
+        </div>
+      )}
       {/* Navigation */}
       <nav className="bg-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4">
