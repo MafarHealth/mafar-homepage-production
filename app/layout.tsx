@@ -5,6 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mafar.com.my'),
   title: 'MAFAR - Bring Good Doctors Forward',
   description: 'Doctor led community base soul & loyalty movement. Join 35+ local communities across Malaysia.',
   keywords: 'MAFAR, healthcare, doctors, malaysia, clinic, mcare, community health',
