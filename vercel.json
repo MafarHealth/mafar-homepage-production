@@ -6,8 +6,7 @@
   "outputDirectory": ".next",
   "regions": ["sin1"],
   "env": {
-    "WEB3FORMS_KEY": "@web3forms_key",
-    "GOOGLE_SHEET_ID": "@google_sheet_id"
+    "WEB3FORMS_KEY": "5452ae12-b718-4763-8bab-2121075729e4"
   },
   "headers": [
     {
